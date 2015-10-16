@@ -1,4 +1,6 @@
 import React from 'react';
+import AlbumList from './AlbumList'
+import WordDisplay from './WordDisplay'
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +9,12 @@ class App extends React.Component {
   }
 
   render() {
-    return ( <p>{ this.state.word }</p> )
+    return (
+      <div>
+        <AlbumList word={this.state.word} />
+        <WordDisplay word={this.state.word} />
+      </div>
+    )
   }
 
   fetchWord() {
@@ -22,7 +29,7 @@ class App extends React.Component {
 
   componentWillMount() {
     this.fetchWord();
-    setInterval(this.fetchWord.bind(this), 1000);
+    setInterval(this.fetchWord.bind(this), 3000);
   }
 }
 
