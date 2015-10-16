@@ -2,7 +2,7 @@ import React from 'react';
 
 class WordDisplay extends React.Component {
   render(){
-    return(<p>{this.props.word}</p>)
+    return(<div className='the-word'>{this.props.word}</div>)
   }
 }
 
