@@ -14,14 +14,15 @@ class AlbumList extends React.Component {
     if (this.state.word !== '') {
       this.fetchAlbums(this.state.word);
     }
-
-    // this.fetchAlbums('banana')
   }
 
   render(){
     let items = this.state.albums.map(
       function(object) {
-        return <AlbumCover url={object.images[1].url} key={object.id}/>
+        return <AlbumCover
+          uri={object.uri}
+          imageUrl={object.images[1].url}
+          key={object.id}/>
       }
     )
 
