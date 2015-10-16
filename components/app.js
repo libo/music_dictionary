@@ -29,7 +29,7 @@ class App extends React.Component {
 
   componentWillMount() {
     this.fetchWord();
-    // setInterval(this.fetchWord.bind(this), 3000);
+    setInterval(this.fetchWord.bind(this), 4000);
   }
 }
 
