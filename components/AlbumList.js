@@ -10,9 +10,11 @@ class AlbumList extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.state.word = nextProps.word
 
-    if (this.state.word !== '') {
-      this.fetchAlbums(this.state.word);
-    }
+    // if (this.state.word !== '') {
+    //   this.fetchAlbums(this.state.word);
+    // }
+
+    this.fetchAlbums('banana')
   }
 
   render(){
@@ -36,7 +38,9 @@ class AlbumList extends React.Component {
   }
 
   updateList(data){
-    this.setState({albums: data.albums.items})
+    if(data.albums.total > 0) {
+      this.setState({albums: data.albums.items})
+    }
   }
 }
 
