@@ -22,9 +22,9 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
   top: 50%;
-
+  text-transform: capitalize;
   color: #ffffff;
-  font-size: 100px;
+  font-size: 8vw;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
@@ -56,10 +56,15 @@ ul.album-list {
 
 li.cover {
   position: relative;
-  width: 300px;
+  width: 20vw;
+  height: 20vw;
   display: block;
-  height: 300px;
   padding: 0;
   line-height: 0;
   float: left;
+}
+
+li.cover img{
+  width: 20vw;
+  height: 20vw;
 }
