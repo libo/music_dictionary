@@ -29,21 +29,21 @@ body {
   -webkit-text-stroke-color: black;
 }
 
-.example-enter {
+.fade-enter {
   opacity: 0.01;
   transition: opacity 1s ease-in;
 }
 
-.example-enter.example-enter-active {
+.fade-enter.fade-enter-active {
   opacity: 1;
 }
 
-.example-leave {
+.fade-leave {
   opacity: 1;
   transition: opacity 1s ease-in;
 }
 
-.example-leave.example-leave-active {
+.fade-leave.fade-leave-active {
   opacity: 0.01;
 }
 

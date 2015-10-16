@@ -1,5 +1,6 @@
 import React from 'react';
 import AlbumCover from './AlbumCover'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class AlbumList extends React.Component {
   constructor(props) {
@@ -10,23 +11,29 @@ class AlbumList extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.state.word = nextProps.word
 
-    // if (this.state.word !== '') {
-    //   this.fetchAlbums(this.state.word);
-    // }
+    if (this.state.word !== '') {
+      this.fetchAlbums(this.state.word);
+    }
 
-    this.fetchAlbums('banana')
+    // this.fetchAlbums('banana')
   }
 
   render(){
+    let items = this.state.albums.map(
+      function(object) {
+        return <AlbumCover url={object.images[1].url} key={object.id}/>
+      }
+    )
+
     return(
       <ul className="album-list">
-        {
-          this.state.albums.map(
-            function(object) {
-              return <AlbumCover url={object.images[1].url} key={object.id}/>
-            }
-          )
-        }
+        <ReactCSSTransitionGroup
+          transitionName="fade"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          { items }
+        </ReactCSSTransitionGroup>
       </ul>
     )
   }
@@ -39,7 +46,8 @@ class AlbumList extends React.Component {
 
   updateList(data){
     if(data.albums.total > 0) {
-      this.setState({albums: data.albums.items})
+      let newList = data.albums.items.slice(0, 8).concat(this.state.albums)
+      this.setState({albums: newList})
     }
   }
 }

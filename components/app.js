@@ -5,7 +5,7 @@ import WordDisplay from './WordDisplay'
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {word: ''};
+    this.state = {word: '', timer: null};
   }
 
   render() {
@@ -18,18 +18,20 @@ class App extends React.Component {
   }
 
   fetchWord() {
-    let apiUrl = "http://randomword.setgetgo.com/get.php"
+    clearTimeout(this.state.timer);
 
+    let apiUrl = "http://randomword.setgetgo.com/get.php"
     $.ajax(apiUrl).done(this.updateWord.bind(this));
   }
 
   updateWord(data) {
     this.setState({word: data})
+
+    this.state.timer = setTimeout(this.fetchWord.bind(this), 2000);
   }
 
   componentWillMount() {
     this.fetchWord();
-    setInterval(this.fetchWord.bind(this), 4000);
   }
 }
 
